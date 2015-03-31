@@ -26,16 +26,14 @@ public class Contract implements Serializable {
 	public Contract() {
 		super();
 	}
-	
 
 	public Contract(Date beginDate, Date endDate, User user, Car car) {
-this.contractId=new ContractId(user.getId(), car.getMatriculation());
+		this.contractId = new ContractId(user.getId(), car.getMatriculation());
 		this.beginDate = beginDate;
 		this.endDate = endDate;
 		this.user = user;
 		this.car = car;
 	}
-
 
 	public Date getBeginDate() {
 		return this.beginDate;
@@ -73,7 +71,7 @@ this.contractId=new ContractId(user.getId(), car.getMatriculation());
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "idCar", referencedColumnName = "id", updatable = false, insertable = false)
+	@JoinColumn(name = "idCar", referencedColumnName = "matriculation", updatable = false, insertable = false)
 	public Car getCar() {
 		return car;
 	}
@@ -81,6 +79,5 @@ this.contractId=new ContractId(user.getId(), car.getMatriculation());
 	public void setCar(Car car) {
 		this.car = car;
 	}
-	
 
 }
