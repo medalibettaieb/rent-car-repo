@@ -18,10 +18,12 @@ public class Customer extends User implements Serializable {
 		super();
 	}
 
-	public Customer(String name, String address) {
+	public Customer(String name, String address, String login, String password) {
 		super();
 		this.address = address;
 		this.setName(name);
+		this.setLogin(login);
+		this.setPassword(password);
 	}
 
 	public String getAddress() {

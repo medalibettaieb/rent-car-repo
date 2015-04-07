@@ -1,48 +1,45 @@
 package mBeans;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import services.interfaces.IdentificationSercivesLocal;
+import domain.Customer;
+import domain.User;
 
 @ManagedBean
 @SessionScoped
 public class LoginBean {
-
-	private String login;
-	private String password;
+	private User user = new User();
+	@EJB
+	private IdentificationSercivesLocal identificationSercivesLocal;
 
 	public String doLogin() {
 		String navigateTo = "";
-		if (login.equalsIgnoreCase("esprit")
-				&& password.equalsIgnoreCase("esprit")) {
-			navigateTo = "/pages/success?faces-redirect=true";
+		User userLoggedIn = identificationSercivesLocal.login(user.getLogin(),
+				user.getPassword());
+		if (userLoggedIn != null) {
+			if (userLoggedIn instanceof Customer) {
+				System.out.println("customer");
+			} else {
+				System.out.println("agency");
+			}
+
 		} else {
-			navigateTo = "/error?faces-redirect=true";
+			System.err.println("error");
 		}
 
 		return navigateTo;
 
 	}
 
-	public String doDisconnect() {
-		login = "";
-
-		return "";
+	public User getUser() {
+		return user;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

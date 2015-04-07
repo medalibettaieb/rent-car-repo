@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -18,6 +18,8 @@ public class User implements Serializable {
 
 	private Integer id;
 	private String name;
+	private String login;
+	private String password;
 	private static final long serialVersionUID = 1L;
 
 	private List<Contract> contracts;
@@ -27,7 +29,7 @@ public class User implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return this.id;
 	}
@@ -52,5 +54,22 @@ public class User implements Serializable {
 	public void setContracts(List<Contract> contracts) {
 		this.contracts = contracts;
 	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 
 }

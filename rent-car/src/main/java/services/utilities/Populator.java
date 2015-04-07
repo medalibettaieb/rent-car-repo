@@ -32,10 +32,10 @@ public class Populator {
 
 	@PostConstruct
 	public void initDb() {
-		Customer customer = new Customer("ra7ma", "ariana");
-		Customer customer2 = new Customer("kawther", "bardo");
-		Customer customer3 = new Customer("moez", "ghazela");
-		Customer customer4 = new Customer("aymen", "tataouin");
+		Customer customer = new Customer("ra7ma", "ariana","r","r");
+		Customer customer2 = new Customer("kawther", "bardo","k","k");
+		Customer customer3 = new Customer("moez", "ghazela","m","m");
+		Customer customer4 = new Customer("aymen", "tataouin","a","a");
 
 		Agency agency = new Agency("yoo-voyage");
 
