@@ -23,6 +23,12 @@ public class LoginBean {
 
 	}
 
+	public String doDisconnect() {
+		login = "";
+
+		return "";
+	}
+
 	public String getLogin() {
 		return login;
 	}
