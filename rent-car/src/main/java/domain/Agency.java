@@ -3,6 +3,7 @@ package domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -22,6 +23,10 @@ public class Agency extends User implements Serializable {
 		super();
 	}
 
+	public Agency(String name) {
+		this.setName(name);
+	}
+
 	public String getLogo() {
 		return this.logo;
 	}
@@ -30,13 +35,20 @@ public class Agency extends User implements Serializable {
 		this.logo = logo;
 	}
 
-	@OneToMany(mappedBy = "agency")
+	@OneToMany(mappedBy = "agency", cascade = CascadeType.PERSIST)
 	public List<Car> getCars() {
 		return cars;
 	}
 
 	public void setCars(List<Car> cars) {
 		this.cars = cars;
+	}
+
+	public void linkCarsToThisAgency(List<Car> cars) {
+		this.cars = cars;
+		for (Car c : cars) {
+			c.setAgency(this);
+		}
 	}
 
 }

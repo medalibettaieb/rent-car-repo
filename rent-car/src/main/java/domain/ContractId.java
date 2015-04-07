@@ -12,16 +12,30 @@ public class ContractId implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer idUser;
-	private Integer idCar;
+	private String idCar;
 
 	public ContractId() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ContractId(Integer idUser, Integer idCar) {
-		super();
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
+	}
+
+	public String getIdCar() {
+		return idCar;
+	}
+
+	public void setIdCar(String idCar) {
 		this.idCar = idCar;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -55,21 +69,14 @@ public class ContractId implements Serializable {
 		return true;
 	}
 
-	public Integer getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(Integer idUser) {
+	public ContractId(Integer idUser, String idCar) {
+		super();
 		this.idUser = idUser;
-	}
-
-	public Integer getIdCar() {
-		return idCar;
-	}
-
-	public void setIdCar(Integer idCar) {
 		this.idCar = idCar;
 	}
+
+	
+	
 
 	
 

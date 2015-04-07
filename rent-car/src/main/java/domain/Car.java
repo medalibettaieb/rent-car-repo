@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Car implements Serializable {
 
-	private Integer matriculation;
+	private String matriculation;
 	private String color;
 	private String brand;
 	private Float price;
@@ -28,12 +28,19 @@ public class Car implements Serializable {
 		super();
 	}
 
-	@Id
-	public Integer getMatriculation() {
-		return this.matriculation;
+	public Car(String matriculation, String color, String brand) {
+		super();
+		this.matriculation = matriculation;
+		this.color = color;
+		this.brand = brand;
 	}
 
-	public void setMatriculation(Integer matriculation) {
+	@Id
+	public String getMatriculation() {
+		return matriculation;
+	}
+
+	public void setMatriculation(String matriculation) {
 		this.matriculation = matriculation;
 	}
 
