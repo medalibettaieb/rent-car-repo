@@ -23,8 +23,11 @@ public class Agency extends User implements Serializable {
 		super();
 	}
 
-	public Agency(String name) {
+	public Agency(String name, String login, String password, String logo) {
 		this.setName(name);
+		this.setLogin(login);
+		this.setPassword(password);
+		this.setLogo(logo);
 	}
 
 	public String getLogo() {

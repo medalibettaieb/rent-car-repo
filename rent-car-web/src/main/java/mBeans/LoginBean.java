@@ -21,13 +21,13 @@ public class LoginBean {
 				user.getPassword());
 		if (userLoggedIn != null) {
 			if (userLoggedIn instanceof Customer) {
-				System.out.println("customer");
+				navigateTo = "/pages/customerHome/customerHome";
 			} else {
-				System.out.println("agency");
+				navigateTo = "/pages/agencyHome/agencyHome";
 			}
 
 		} else {
-			System.err.println("error");
+			navigateTo = "/error";
 		}
 
 		return navigateTo;
