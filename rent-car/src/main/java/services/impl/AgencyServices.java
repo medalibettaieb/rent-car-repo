@@ -3,28 +3,33 @@ package services.impl;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import domain.Agency;
 import services.interfaces.AgencyServicesLocal;
 import services.interfaces.AgencyServicesRemote;
+import domain.Agency;
 
 /**
  * Session Bean implementation class AgencyServices
  */
 @Stateless
-public class AgencyServices implements AgencyServicesRemote, AgencyServicesLocal {
+public class AgencyServices implements AgencyServicesRemote,
+		AgencyServicesLocal {
+	@PersistenceContext
+	private EntityManager entityManager;
 
-    /**
-     * Default constructor. 
-     */
-    public AgencyServices() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public AgencyServices() {
+	}
 
 	@Override
 	public List<Agency> findAllAgencies() {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager
+				.createQuery("select a from Agency a", Agency.class)
+				.getResultList();
 	}
 
 }
