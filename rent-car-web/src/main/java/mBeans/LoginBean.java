@@ -8,7 +8,7 @@ import services.interfaces.IdentificationSercivesLocal;
 import domain.Customer;
 import domain.User;
 
-@ManagedBean
+@ManagedBean(name = "login")
 @SessionScoped
 public class LoginBean {
 	private User user = new User();
@@ -21,8 +21,10 @@ public class LoginBean {
 				user.getPassword());
 		if (userLoggedIn != null) {
 			if (userLoggedIn instanceof Customer) {
+				user = userLoggedIn;
 				navigateTo = "/pages/customerHome/customerHome?faces-redirect=true";
 			} else {
+				user = userLoggedIn;
 				navigateTo = "/pages/agencyHome/agencyHome?faces-redirect=true";
 			}
 

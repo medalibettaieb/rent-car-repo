@@ -6,15 +6,8 @@
 
 <h:head></h:head>
 <body>
-	<h1>login page</h1>
 	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="login" />
-			<h:inputText value="#{login.user.login}" />
-			<h:outputText value="pwd" />
-			<h:inputSecret value="#{login.user.password}" />
-		</h:panelGrid>
-		<h:commandButton action="#{login.doLogin}" value="login" />
+		<h:commandButton action="#{agencyBean.doCreateContract}" value="go" />
 	</h:form>
 </body>
 </html>

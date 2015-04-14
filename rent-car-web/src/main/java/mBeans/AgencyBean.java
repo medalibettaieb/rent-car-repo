@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.enterprise.inject.Any;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -14,20 +15,38 @@ import domain.Agency;
 import domain.Car;
 
 @ManagedBean
-@Any
+@SessionScoped
 public class AgencyBean {
 	private List<Agency> agencies = new ArrayList<>();
 	private List<Car> carsByAgency = new ArrayList<>();
 	private Integer idAgency;
 	private DataModel<Agency> datamodel = new ListDataModel<>();
 	private DataModel<Car> datamodelCars = new ListDataModel<>();
+
+	private Agency agencySelected;
+	private Car carSelected;
+
+	@ManagedProperty(value = "#{login}")
+	private LoginBean loginBean;
 	@EJB
 	private AgencyServicesLocal agencyServicesLocal;
 
 	public String doSelectAgency() {
-		Agency agencySelected = datamodel.getRowData();
+		agencySelected = datamodel.getRowData();
 		idAgency = agencySelected.getId();
 		return "/pages/customerHome/listCarsByAgency";
+	}
+
+	public String doSelectCar() {
+		carSelected = datamodelCars.getRowData();
+		return "/pages/customerHome/contractView";
+	}
+
+	public String doCreateContract() {
+		System.out.println(agencySelected.getName());
+		System.out.println(carSelected.getMatriculation());
+		System.out.println(loginBean.getUser().getName());
+		return "";
 	}
 
 	public List<Agency> getAgencies() {
@@ -65,6 +84,22 @@ public class AgencyBean {
 
 	public void setDatamodelCars(DataModel<Car> datamodelCars) {
 		this.datamodelCars = datamodelCars;
+	}
+
+	public Car getCarSelected() {
+		return carSelected;
+	}
+
+	public void setCarSelected(Car carSelected) {
+		this.carSelected = carSelected;
+	}
+
+	public LoginBean getLoginBean() {
+		return loginBean;
+	}
+
+	public void setLoginBean(LoginBean loginBean) {
+		this.loginBean = loginBean;
 	}
 
 }
