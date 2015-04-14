@@ -6,24 +6,35 @@
 
 <h:head></h:head>
 <body>
-	<h1>list of agencies</h1>
+	<h1>list car by agency</h1>
 	<h:form>
-		<h:dataTable border="1" value="#{agencyBean.datamodel}" var="a">
+		<h:dataTable border="1" value="#{agencyBean.datamodelCars}" var="car">
 			<h:column id="column1">
 				<f:facet name="header">
-					<h:outputText value="name"></h:outputText>
+					<h:outputText value="matriculation"></h:outputText>
 				</f:facet>
-			#{a.name}
+			#{car.matriculation}
 		</h:column>
 			<h:column id="column2">
 				<f:facet name="header">
+					<h:outputText value="color"></h:outputText>
+				</f:facet>
+			#{car.color}
+		</h:column>
+			<h:column id="column3">
+				<f:facet name="header">
+					<h:outputText value="brand"></h:outputText>
+				</f:facet>
+			#{car.brand}
+		</h:column>
+			<h:column id="column4">
+				<f:facet name="header">
 					<h:outputText value="#"></h:outputText>
 				</f:facet>
-				<h:commandButton action="#{agencyBean.doSelectAgency}"
-					value="select" />
-			</h:column>
 
+			</h:column>
 		</h:dataTable>
+
 	</h:form>
 </body>
 </html>

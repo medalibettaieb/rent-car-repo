@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import services.interfaces.AgencyServicesLocal;
 import services.interfaces.AgencyServicesRemote;
 import domain.Agency;
+import domain.Car;
 
 /**
  * Session Bean implementation class AgencyServices
@@ -30,6 +31,15 @@ public class AgencyServices implements AgencyServicesRemote,
 		return entityManager
 				.createQuery("select a from Agency a", Agency.class)
 				.getResultList();
+	}
+
+	@Override
+	public List<Car> findAllCarsByAgencyId(Integer idAgency) {
+		return entityManager
+				.createQuery("select c from Car c where c.agency.id =:param",
+						Car.class).setParameter("param", idAgency)
+				.getResultList();
+
 	}
 
 }

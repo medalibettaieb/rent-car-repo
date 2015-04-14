@@ -38,6 +38,8 @@ public class Populator {
 		Customer customer4 = new Customer("aymen", "tataouin", "a", "a");
 
 		Agency agency = new Agency("yoo-voyage", "yoo", "yoo", "7mama");
+		Agency agency2 = new Agency("voyage à la carte", "carte", "carte",
+				"warda");
 
 		Car car = new Car("179TU1111", "black", "symbole");
 		Car car2 = new Car("179TU2222", "red", "504");
@@ -57,6 +59,7 @@ public class Populator {
 		entityManager.persist(customer4);
 
 		entityManager.persist(agency);
+		entityManager.persist(agency2);
 
 	}
 
