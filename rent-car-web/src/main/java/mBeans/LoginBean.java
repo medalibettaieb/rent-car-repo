@@ -12,6 +12,7 @@ import domain.User;
 @SessionScoped
 public class LoginBean {
 	private User user = new User();
+	private Boolean loggedInAsCustomer = false;
 	@EJB
 	private IdentificationSercivesLocal identificationSercivesLocal;
 
@@ -21,6 +22,7 @@ public class LoginBean {
 				user.getPassword());
 		if (userLoggedIn != null) {
 			if (userLoggedIn instanceof Customer) {
+				loggedInAsCustomer = true;
 				user = userLoggedIn;
 				navigateTo = "/pages/customerHome/customerHome?faces-redirect=true";
 			} else {
@@ -42,6 +44,14 @@ public class LoginBean {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Boolean getLoggedInAsCustomer() {
+		return loggedInAsCustomer;
+	}
+
+	public void setLoggedInAsCustomer(Boolean loggedInAsCustomer) {
+		this.loggedInAsCustomer = loggedInAsCustomer;
 	}
 
 }
