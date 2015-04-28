@@ -1,5 +1,6 @@
 package services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -10,6 +11,8 @@ import services.interfaces.AgencyServicesLocal;
 import services.interfaces.AgencyServicesRemote;
 import domain.Agency;
 import domain.Car;
+import domain.Contract;
+import domain.User;
 
 /**
  * Session Bean implementation class AgencyServices
@@ -40,6 +43,19 @@ public class AgencyServices implements AgencyServicesRemote,
 						Car.class).setParameter("param", idAgency)
 				.getResultList();
 
+	}
+
+	@Override
+	public Boolean createContract(Date beginDate, Date endDate, Car car,
+			User user) {
+		Boolean b = false;
+		try {
+			Contract contract = new Contract(beginDate, endDate, user, car);
+			entityManager.persist(contract);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
 	}
 
 }

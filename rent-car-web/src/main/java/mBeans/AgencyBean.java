@@ -39,7 +39,7 @@ public class AgencyBean {
 
 	public String doSelectCar() {
 		carSelected = datamodelCars.getRowData();
-		return "/pages/customerHome/contractView";
+		return "";
 	}
 
 	public String doCreateContract() {

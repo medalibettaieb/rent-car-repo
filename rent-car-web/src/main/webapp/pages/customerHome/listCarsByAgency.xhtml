@@ -34,6 +34,16 @@
 				<h:commandButton action="#{agencyBean.doSelectCar}" value="select" />
 			</h:column>
 		</h:dataTable>
+		<h:panelGrid columns="2">
+			<h:outputText value="begin date" />
+			<h:inputText value="#{contractBean.beginDate}">
+			</h:inputText>
+			<h:outputText value="end  date" />
+			<h:inputText value="#{contractBean.endDate}">
+			</h:inputText>
+			<h:commandButton action="#{contractBean.doCreateContract}"
+				value="signature" />
+		</h:panelGrid>
 
 	</h:form>
 </body>
