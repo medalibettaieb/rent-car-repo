@@ -14,6 +14,9 @@ public class MrBean {
 		return "/login";
 	}
 
+	public void doValidate(){
+		
+	}
 	public String getNameOne() {
 		return nameOne;
 	}
