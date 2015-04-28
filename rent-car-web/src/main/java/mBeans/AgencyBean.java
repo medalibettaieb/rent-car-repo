@@ -49,6 +49,14 @@ public class AgencyBean {
 		return "";
 	}
 
+	public void doSomething() {
+		System.out.println(agencySelected.getName());
+	}
+
+	public Agency doFindAgencyByName(String name) {
+		return agencyServicesLocal.findAgencyByName(name);
+	}
+
 	public List<Agency> getAgencies() {
 		agencies = agencyServicesLocal.findAllAgencies();
 		return agencies;
@@ -100,6 +108,14 @@ public class AgencyBean {
 
 	public void setLoginBean(LoginBean loginBean) {
 		this.loginBean = loginBean;
+	}
+
+	public Agency getAgencySelected() {
+		return agencySelected;
+	}
+
+	public void setAgencySelected(Agency agencySelected) {
+		this.agencySelected = agencySelected;
 	}
 
 }

@@ -5,21 +5,33 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter
+import mBeans.AgencyBean;
+import domain.Agency;
+
+@FacesConverter("ac")
 public class AgencyConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String string) {
-		// TODO Auto-generated method stub
-		return null;
+		if (string == null) {
+			return null;
+		}
+		AgencyBean agencyBean = context.getApplication().evaluateExpressionGet(
+				context, "#{agencyBean}", AgencyBean.class);
+		Agency agency = agencyBean.doFindAgencyByName(string);
+
+		return agency;
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,
 			Object object) {
-		// TODO Auto-generated method stub
-		return null;
+		String string = null;
+		if (object instanceof Agency) {
+			string = ((Agency) object).getName();
+		}
+		return string;
 	}
 
 }
