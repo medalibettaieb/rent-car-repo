@@ -16,4 +16,6 @@ public interface AgencyServicesLocal {
 	List<Car> findAllCarsByAgencyId(Integer idAgency);
 
 	Boolean createContract(Date beginDate, Date endDate, Car car, User user);
+
+	Agency findAgencyByName(String name);
 }

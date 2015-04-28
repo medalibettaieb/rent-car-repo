@@ -58,4 +58,12 @@ public class AgencyServices implements AgencyServicesRemote,
 		return b;
 	}
 
+	@Override
+	public Agency findAgencyByName(String name) {
+		return entityManager
+				.createQuery("select a from Agency a where a.name=:param1",
+						Agency.class).setParameter("param1", name)
+				.getSingleResult();
+	}
+
 }

@@ -37,9 +37,11 @@
 		<h:panelGrid columns="2">
 			<h:outputText value="begin date" />
 			<h:inputText value="#{contractBean.beginDate}">
+			<f:convertDateTime pattern="dd/MM/yyyy"/>
 			</h:inputText>
 			<h:outputText value="end  date" />
 			<h:inputText value="#{contractBean.endDate}">
+			<f:convertDateTime pattern="dd/MM/yyyy"/>
 			</h:inputText>
 			<h:commandButton action="#{contractBean.doCreateContract}"
 				value="signature" />
